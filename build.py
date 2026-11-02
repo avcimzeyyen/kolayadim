@@ -185,7 +185,7 @@ write("/hakkinda/", page("Hakkında", "KolayAdım hakkında", "/hakkinda/",
   '<p><a href="https://github.com/avcimzeyyen">GitHub</a></p>')); urls.append("/hakkinda/")
 write("/gizlilik/", page("Gizlilik Politikası", "KolayAdım gizlilik politikası", "/gizlilik/",
   "<h1>Gizlilik Politikası</h1><p>KolayAdım hesap istemez ve kişisel veri toplamaz. Tamamladığın adımlar yalnızca tarayıcında (LocalStorage) saklanır. "
-  "İleride reklam veya analiz hizmeti eklenirse bu sayfa güncellenecektir.</p><p>İletişim: buraya e-posta adresini yaz.</p>")); urls.append("/gizlilik/")
+  "İleride reklam veya analiz hizmeti eklenirse bu sayfa güncellenecektir.</p><p>İletişim: avcimzeyyen@gmail.com</p>")); urls.append("/gizlilik/")
 
 sm = '<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">' + "".join(f"<url><loc>{SITE}{u}</loc></url>" for u in urls) + "</urlset>"
 write("/sitemap.xml", sm)
