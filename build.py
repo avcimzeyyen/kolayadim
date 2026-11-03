@@ -188,6 +188,25 @@ document.querySelectorAll('[data-g]').forEach(function(a){
   var p=Math.round(n*100/t),e=a.querySelector('i'),l=a.querySelector('.pl');
   if(e)e.style.width=p+'%';if(l)l.textContent='%'+p+' tamamlandı';
 });
+var arama = document.getElementById('arama');
+
+if (arama) {
+  var kartlar = document.querySelectorAll('.grid .card');
+
+  arama.addEventListener('input', function() {
+    var kelime = this.value.toLocaleLowerCase('tr-TR').trim();
+
+    kartlar.forEach(function(kart) {
+      var metin = kart.textContent.toLocaleLowerCase('tr-TR');
+
+      if (metin.includes(kelime)) {
+        kart.style.display = '';
+      } else {
+        kart.style.display = 'none';
+      }
+    });
+  });
+}
 })();"""
 
 def page(title, desc, path, body):
@@ -218,8 +237,11 @@ write("/robots.txt", f"User-agent: *\nAllow: /\nSitemap: {SITE}/sitemap.xml\n")
 urls = ["/"]
 
 # Ana sayfa
+# Ana sayfa
 body = ('<h1>Yapmak istediğin işi seç, adım adım ilerle</h1>'
-        '<p class="mut">KolayAdım; iş, eğitim ve günlük hayat için kontrol listeleri ve yol haritaları sunar. İlerlemen tarayıcında saklanır.</p><div class="grid">')
+        '<p class="mut">KolayAdım; iş, eğitim ve günlük hayat için kontrol listeleri ve yol haritaları sunar. İlerlemen tarayıcında saklanır.</p>'
+        '<input type="text" id="arama" placeholder="Bir şeyler ara...">'
+        '<div class="grid">')
 for s, (t, d, live) in CATS.items():
     body += f'<a class="card" href="{BASE}/{s}/"><h3>{t}</h3><p>{d}</p></a>'
 body += '</div><h2>Öne çıkan rehberler</h2><div class="grid">' + "".join(card(g) for g in G if g[1] == "is-ve-kariyer") + "</div>"

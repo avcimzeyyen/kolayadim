@@ -15,4 +15,23 @@ document.querySelectorAll('[data-g]').forEach(function(a){
   var p=Math.round(n*100/t),e=a.querySelector('i'),l=a.querySelector('.pl');
   if(e)e.style.width=p+'%';if(l)l.textContent='%'+p+' tamamlandı';
 });
+var arama = document.getElementById('arama');
+
+if (arama) {
+  var kartlar = document.querySelectorAll('.grid .card');
+
+  arama.addEventListener('input', function() {
+    var kelime = this.value.toLocaleLowerCase('tr-TR').trim();
+
+    kartlar.forEach(function(kart) {
+      var metin = kart.textContent.toLocaleLowerCase('tr-TR');
+
+      if (metin.includes(kelime)) {
+        kart.style.display = '';
+      } else {
+        kart.style.display = 'none';
+      }
+    });
+  });
+}
 })();
